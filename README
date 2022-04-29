@@ -1,0 +1,35 @@
+Dificultatea temei : Medie (in afara de mv, acolo e mai complicat)
+Timp de lucru: 3-4 zile
+
+Am inceput prin citirea comenzilor cu fgets in main ca sa citesc linie cu linie,
+astfel parcurgand toate comenzile. Am facut touch-ul prin crearea unui nod nou
+de tip File*, am alocat memorie si am creat legaturile, setand head-ul daca lista
+este goala, sau adaugand nodul la sfarsitul listei in caz ca exista alte elemente.
+Am facut acelasi lucru pentru directoare, doar ca am schimbat tipul elementului 
+care trebuie adaugat(mkdir). Am continuat cu comanda ls, unde doar am afisat 
+continutul listei de directoare, precum si cel al listei de fisiere. Rm-ul l-am
+facut prin verificarea locului de unde trebuie sters fisierul. Daca primul fisier
+din lista trebuie sters, mut head-ul, daca nu, doar refac legaturile si eliberez 
+memoria. Rmdir-ul l-am facut recursiv, ca sa pot sa sterg tot ce este in interiorul
+unui director, reinitializand mereu iteratorul cu head-ul listei, ca sa o ia de la primul
+element, apoi eliberand memoria(din nou am testat daca elementul care trebuie sters e primul 
+sau nu). Comanda cd am facut-o incepand prin schimbarea directorului curent in directorul
+parinte, apoi am parcurs lista si am mutat directorul curent in directorul target
+gasit. Comanda pwd am facut-o recursiv. Am alocat memorie pentru sirul care trebuie
+returnat si am copiat in el numele directorului root. Daca nu am ajuns la root am 
+realocat memorie pentru sir si am concatenat numele directorului curent. La comanda
+stop am apelat rmdir pe directorul root pentru a elibera memorie in tot programul.
+Comanda tree am facut-o recursiv, am afisat mai intai spatii pentru fiecare level, 
+apeland apoi tree-ul pentru level+1, afisand tot ce este intr-un director.
+
+MV-ul a fost cel mai complicat si am stat cel mai mult pe el. Am inceput prin a 
+verifica daca exista un fisier/director cu numele "newname". Am verificat daca este
+primul element din lista, apoi am parcurs lista si am verificat daca exista sau nu
+un element cu "newname" atat la directoare, cat si la fisiere. Am resetat currDir si 
+currFile pentru ca se schimbasera de la verificarile anterioare, iar eu inca aveam 
+nevoie de ele. Am verificat daca exista oldname pe prima pozitie din lista, iar daca
+exista, copiez nodul si setez head-ul pe urmatorul element, iar daca este singurul in lista
+doar schimb numele. Daca nu e primul din lista, parcurg lista si daca il gasesc, schimb
+legaturile. Acelasi lucru il fac si pentru fisiere. La sfarsit, daca contorul meu este egal
+cu 1, adaug copia la sfarsitul listei, setez next-ul ei cu null ca sa nu fie lista circulara,
+schimb numele si ies din functie. (am stat vreo 2 zile pe mv).
